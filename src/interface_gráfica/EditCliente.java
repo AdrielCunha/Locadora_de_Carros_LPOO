@@ -65,6 +65,7 @@ public class EditCliente extends javax.swing.JFrame {
         jTextField31 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/cross.png"))); // NOI18N
         jButton5.setText("Cancelar");
