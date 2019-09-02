@@ -5,6 +5,7 @@
  */
 package interface_gráfica;
 
+import View.TelaLogin;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 

@@ -16,7 +16,7 @@ UF char(2),
 Cidade varchar(50),
 Complemento varchar(50));
 
-create table Telefone(
+create table clienteTelefone(
 IDTelefone int key auto_increment,
 Telefone char(14),
 IDCliente int,
@@ -50,6 +50,13 @@ Complemeto varchar(50),
 Cargo varchar(50),
 Salario float(10,2));
 
+create table funcionarioTelefone(
+IDTelefone int key auto_increment,
+Telefone char(14),
+IDfuncionario int,
+foreign key (IDfuncionario) references funcionario(IDFuncionario));
+
+
 create table Locacao(
 IDLocacao int key auto_increment,
 IDCliente int,
@@ -62,20 +69,3 @@ Total float(10,2),
 foreign key (IDCliente) references Cliente(IDCliente),
 foreign key (IDCarro) references Carro(IDCarro),
 foreign key (IDFuncionario) references Funcionario(IDFuncionario));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
