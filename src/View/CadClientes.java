@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.ClienteController;
+import Model.Cliente;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -54,7 +56,7 @@ public class CadClientes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtTelefone = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtDataNascimento = new javax.swing.JFormattedTextField();
+        txtDatanascimento = new javax.swing.JFormattedTextField();
         txtSexo = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -110,7 +112,7 @@ public class CadClientes extends javax.swing.JFrame {
 
         jLabel7.setText("Data de nascimento:");
 
-        txtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        txtDatanascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
 
         txtSexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "Masculino", "Feminino", "Outro" }));
 
@@ -152,7 +154,7 @@ public class CadClientes extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel4)
                     .addComponent(txtCnh, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addComponent(txtDataNascimento))
+                    .addComponent(txtDatanascimento))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,7 +179,7 @@ public class CadClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDatanascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEstadocivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -340,10 +342,32 @@ public class CadClientes extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Novo cliente cadastrado com sucesso.", "Aviso!", 1);
-        this.setVisible(false);
-        MenuPrincipal tela = new MenuPrincipal();
-        tela.setVisible(true);
+        try{
+            Cliente c = new Cliente();
+            c.setNome(txtNome.getText());
+            c.setCpf(txtCpf.getText());
+            c.setCep(txtCep.getText());
+            c.setSexo(txtSexo.getSelectedItem().toString());
+            c.setEstadocivil(txtEstadocivil.getSelectedItem().toString());
+            c.setDatanascimento(txtDatanascimento.getText());
+            c.setRua(txtRua.getText());
+            c.setNumero(Integer.parseInt(txtNumero.getText()));
+            c.setBairro(txtBairro.getText());
+            c.setCep(txtCep.getText());
+            c.setEstado(txtEstado.getSelectedItem().toString());
+            c.setCidade(txtCidade.getText());
+            c.setComplemento(txtComplemento.getText()); 
+            
+            ClienteController cc = new ClienteController(); 
+            cc.insert(c);
+            
+            JOptionPane.showMessageDialog(this, "Novo cliente cadastrado com sucesso.", "Aviso!", 1);
+            this.setVisible(false);
+            MenuPrincipal tela = new MenuPrincipal();
+            tela.setVisible(true);
+        }catch(NumberFormatException e){
+            JOptionPane.showConfirmDialog(rootPane, e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -409,7 +433,7 @@ public class CadClientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtCnh;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JFormattedTextField txtDataNascimento;
+    private javax.swing.JFormattedTextField txtDatanascimento;
     private javax.swing.JComboBox txtEstado;
     private javax.swing.JComboBox txtEstadocivil;
     private javax.swing.JTextField txtNome;
