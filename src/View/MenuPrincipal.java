@@ -103,6 +103,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32_group_add.png"))); // NOI18N
+        jButton1.setToolTipText("Cadastrar Cliente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -111,6 +112,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jToolBar1.add(jButton1);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/car-add-icon.png"))); // NOI18N
+        jButton3.setToolTipText("Cadastrar Carro");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -120,6 +122,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/32x32_report_add.png"))); // NOI18N
+        jButton2.setToolTipText("Fazer Locação");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -128,6 +131,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jToolBar1.add(jButton2);
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/user-add-icon (1).png"))); // NOI18N
+        jButton7.setToolTipText("Cadastrar Funcionário");
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

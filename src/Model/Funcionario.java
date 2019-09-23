@@ -130,9 +130,32 @@ public class Funcionario {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-    
-    private int id, numero;
-    private String nome, cpf, rg, datanascimento, sexo, rua, bairro, cep, estado, cidade, complemento, cargo;
+
+    public int getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(int ddd) {
+        this.ddd = ddd;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCnh() {
+        return cnh;
+    }
+
+    public void setCnh(String cnh) {
+        this.cnh = cnh;
+    }
     private float salario;
+    private int id, numero, ddd, telefone;
+    private String nome, cpf, cnh, rg, datanascimento, sexo, rua, bairro, cep, estado, cidade, complemento, cargo;
     
 }

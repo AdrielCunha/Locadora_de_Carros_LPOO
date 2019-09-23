@@ -122,8 +122,24 @@ public class Cliente {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
+
+    public int getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(int ddd) {
+        this.ddd = ddd;
+    }
+
+    public int getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(int telefone) {
+        this.telefone = telefone;
+    }
     
-    private int id, numero;
+    private int id, numero, ddd, telefone;
     private String nome, cpf, cnh, sexo, estadocivil, datanascimento, rua, bairro, cep, estado, cidade, complemento;
     
     

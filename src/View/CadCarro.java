@@ -5,6 +5,8 @@
  */
 package View;
 
+import Controller.CarroController;
+import Model.Carro;
 import javax.swing.JOptionPane;
 
 /**
@@ -192,10 +194,29 @@ public class CadCarro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Carro cadastrado com sucesso.", "Aviso!", 1);
-        this.setVisible(false);
-        MenuPrincipal tela = new MenuPrincipal();
-        tela.setVisible(true);
+        try{
+            Carro c = new Carro(); 
+            
+            CarroController cc = new CarroController(); 
+            cc.insert(c);
+            
+            c.setMarca(txtMarca.getText());
+            c.setModelo(txtModelo.getText());
+            c.setChassi(txtNumeroChassi.getText());
+            c.setPlaca(txtPlaca.getText());
+            c.setProcodiaria(Float.parseFloat(txtPrecodiaria.getText()));
+            c.setCor(txtCor.getText());
+            c.setValoripva(Float.parseFloat(txtValoripva.getText()));
+            c.setSeguro(txtSeguro.getSelectedItem().toString());
+            c.setValorseguro(Float.parseFloat(txtValorseguro.getText()));
+            
+            JOptionPane.showMessageDialog(this, "Novo cliente cadastrado com sucesso.", "Aviso!", 1);
+            this.setVisible(false);
+            MenuPrincipal tela = new MenuPrincipal();
+            tela.setVisible(true);
+        }catch(NumberFormatException e){
+            JOptionPane.showConfirmDialog(rootPane, e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

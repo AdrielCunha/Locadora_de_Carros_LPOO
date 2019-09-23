@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.Locacao;
+import Controller.LocacaoController;
 import javax.swing.JOptionPane;
 
 /**
@@ -175,6 +177,11 @@ public class CadLocacao extends javax.swing.JFrame {
         jLabel12.setText("Nº de parcelas:");
 
         txtNumeroparcelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1x sem juros", "2x sem juros", "3x com juros de R$100" }));
+        txtNumeroparcelas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNumeroparcelasActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/report_add.png"))); // NOI18N
         jButton2.setText("Alugar");
@@ -251,15 +258,43 @@ public class CadLocacao extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String nome = txtNome.getText();
-        String modelo = txtModelo.getText();
+        try{
+            Locacao l = new Locacao();
+            
+            l.setNome(txtNome.getText());
+            l.setCpf(txtCpf.getText());
+            l.setCnh(txtCnh.getText());
+            l.setModelo(txtModelo.getText());
+            l.setPlaca(txtPlaca.getText());
+            l.setCor(txtCor.getText());
+            l.setEntregacarro(txtEntregacarro.getText());
+            l.setMetodopagamento(txtMetodopagamento.getSelectedItem().toString());
+            l.setNumeroparcelas(Integer.parseInt(txtNumeroparcelas.getSelectedItem().toString()));
+            l.setTotal(Float.parseFloat(txtTotal.getText()));
+            
+            LocacaoController lc = new LocacaoController();
+            lc.insert(l);
+                                   
+            String nome = txtNome.getText();
+            String modelo = txtModelo.getText();
+
+            JOptionPane.showMessageDialog(this, "O carro " + modelo + " foi alugado para " + nome + " com sucesso!", "Aviso!", 1);
+            this.setVisible(false);
+            MenuPrincipal tela = new MenuPrincipal();
+            tela.setVisible(true); 
+            
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showConfirmDialog(rootPane, e.getMessage());
+        }
         
         
-        JOptionPane.showMessageDialog(this, "O carro " + modelo + " foi alugado para " + nome + " com sucesso!", "Aviso!", 1);
-        this.setVisible(false);
-        MenuPrincipal tela = new MenuPrincipal();
-        tela.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtNumeroparcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroparcelasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNumeroparcelasActionPerformed
 
     /**
      * @param args the command line arguments

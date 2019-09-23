@@ -94,5 +94,4 @@ public class Carro {
     private int id;
     private String marca, modelo, chassi, placa, cor, seguro;
     private float procodiaria, valoripva, valorseguro;
-    
 }
